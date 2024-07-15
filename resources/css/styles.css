@@ -4,7 +4,8 @@
 
 body {
     background-color: #375D44;
-    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
 }
 
 h2 {
@@ -27,6 +28,13 @@ section.grid-system {
     grid-template-rows: repeat(20, 1fr);
     row-gap: 1rem; /* Uncomment later, easier to place items on the grid visually without the gap */
 }
+
+/* Fixes the VH problem in IOS Safari and simular browsers */
+@supports (height: 100dvh) {
+    body, section.grid-system {
+      height: 100dvh;
+    }
+  }
 
 .container_rows_summary {
     grid-row: 3 / 4;
