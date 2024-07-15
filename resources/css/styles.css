@@ -108,7 +108,7 @@ input.hours_input {
 
 /* Add user rows container styling */
 
-.add_rows_section {
+#add_rows_section {
     position: relative;
     background-color: white;
     border-radius: 1.5rem 1.5rem 0 0;
@@ -149,12 +149,12 @@ input.hours_input {
     margin-left: -6.4rem;
 }
 
-.remove-row-button img {
+#remove-row-button img {
     width: 3rem;
     height: 3rem;
 }
 
-.add-row-button img {
+#add-row-button img {
     width: 3rem;
     height: 3rem;
     margin-left: .5rem;

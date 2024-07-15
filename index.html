@@ -34,7 +34,7 @@
                 <input id="shift_hours" class="hours_input" type="number" pattern='[0-9]*' name="working_hours" value="8" onclick="this.select();" min="1" max="15">
             </form>
         </div>
-        <div class="add_rows_section">
+        <div id="add_rows_section">
             <div class="add_rows_container">
                 <div class="user_rows">
                     <h4>Runda 1</h4>
@@ -45,10 +45,10 @@
             </div>
         </div>
         <div class="btn_container">
-            <button class="remove-row-button" aria-label="Remove row">
+            <button id="remove-row-button" aria-label="Remove row">
                 <img src="./resources/svg/remove_btn.svg" alt="Remove row">
             </button>
-            <button class="add-row-button" aria-label="Add new row">
+            <button id="add-row-button" aria-label="Add new row">
                 <img src="./resources/svg/add_btn.svg" alt="Add new row">
             </button>
         </div>
