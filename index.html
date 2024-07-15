@@ -31,7 +31,7 @@
         </div>
         <div class="container_working_hours">
             <form>
-                <input id="shift_hours" class="hours_input" type="number" pattern='[0-9]*' name="working_hours" value="8" min="1" max="15">
+                <input id="shift_hours" class="hours_input" type="number" pattern='[0-9]*' name="working_hours" value="8" onclick="this.select();" min="1" max="15">
             </form>
         </div>
         <div class="add_rows_section">
@@ -39,7 +39,7 @@
                 <div class="user_rows">
                     <h4>Runda 1</h4>
                     <form>
-                        <input class="row_quantity_input" type="number" pattern='[0-9]*' name="row_quantity" value="0" min="1">
+                        <input class="row_quantity_input" type="number" pattern='[0-9]*' name="row_quantity" value="0" onclick="this.select();" min="1">
                     </form>
                 </div>
             </div>
