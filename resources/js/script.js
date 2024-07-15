@@ -23,6 +23,3 @@ class EmployeeStatistics {
 }
 
 const test1 = new EmployeeStatistics('PlaceholderName');
-
-console.log(test1._workingHours);
-console.log(test1.calculateRowsForTheDay());

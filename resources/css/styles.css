@@ -4,15 +4,16 @@
 
 body {
     background-color: #375D44;
+    overflow: hidden;
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 h4 {
     font-family: "Roboto", sans-serif;
-    font-size: .7rem;
+    font-size: .8rem;
     margin-bottom: .5rem;
 }
 
