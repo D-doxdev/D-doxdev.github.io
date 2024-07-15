@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./resources/css/reset.css">
+    <link rel="stylesheet" href="./resources/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <section class="grid-system">
+        <div class="row_container container_rows_summary">
+            <h4>Rader för dagen</h4>
+            <h2>416</h2>
+        </div>
+        <div class="divider"></div>
+        <div class="row_container container_rows_done">
+            <h4>Rader avklarade</h4>
+            <h2>0</h2>
+        </div>
+        <div class="row_container container_rows_per_hour">
+            <h4>Rader i timmen</h4>
+            <h2>0</h2>
+        </div>
+        <div class="container_working_hours">
+            <form>
+                <input id="shift_hours" class="hours_input" type="number" name="working_hours" value="8" min="1" max="15">
+            </form>
+        </div>
+        <div class="add_rows_section">
+            <div class="add_rows_container">
+                <div class="user_rows">
+                    <h4>Runda 1</h4>
+                    <form>
+                        <input class="row_quantity_input" type="number" name="row_quantity" value="0" min="1">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="btn_container">
+            <button class="remove-row-button" aria-label="Remove row">
+                <img src="./resources/svg/remove_btn.svg" alt="Remove row">
+            </button>
+            <button class="add-row-button" aria-label="Add new row">
+                <img src="./resources/svg/add_btn.svg" alt="Add new row">
+            </button>
+        </div>
+    </section>
+    
+   <script defer src="./resources/js/script.js"></script>
+
+</body>
+
+</html>
