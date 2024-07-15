@@ -94,6 +94,8 @@ input {
     border: .5rem solid #375D44;
     border-width: .1rem;
     width: 100%;
+    -webkit-user-select: all;
+    user-select: all;
 }
 
 /* Hours input styling */
