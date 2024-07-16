@@ -16,6 +16,7 @@ h4 {
     font-family: "Roboto", sans-serif;
     font-size: .8rem;
     margin-bottom: .5rem;
+    font-weight: 450;
 }
 
 /* Grid styling, used to position all the elements on the screen. */
@@ -93,7 +94,7 @@ input {
     font-size: 1rem;
     color: #375D44;
     border: .5rem solid #375D44;
-    border-width: .1rem;
+    border-width: .13rem;
     width: 100%;
 }
 
