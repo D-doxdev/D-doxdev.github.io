@@ -58,6 +58,8 @@ class EmployeeStatistics {
     updateWorkingHours() {
         this._workingHours = this._workingHoursInput.value;
         this.calculateRowsForTheDay();
+        this.calculateFinishedRows()
+        this.calculateRowsPerHour()
     }
 
     calculateRowsForTheDay() {
@@ -85,9 +87,10 @@ class EmployeeStatistics {
     }
 
     calculateRowsPerHour() {
-        const testRowSum = this.calculateFinishedRows();
-        let rowPerHourCalc = testRowSum / this._workingHours;
-        this._rowsPerHourDomText.innerHTML = rowPerHourCalc; 
+        const storedRowSum = this.calculateFinishedRows();
+        let rowPerHourCalc = storedRowSum / this._workingHours;
+        // Rounds up to at most two decimals
+        this._rowsPerHourDomText.innerHTML = Math.round(rowPerHourCalc*100)/100;
     }
 
     addNewRow() {

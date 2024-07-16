@@ -14,9 +14,8 @@ h2 {
 
 h4 {
     font-family: "Roboto", sans-serif;
-    font-size: .8rem;
-    margin-bottom: .5rem;
-    font-weight: 450;
+    font-size: .9rem;
+    margin-bottom: .6rem;
 }
 
 /* Grid styling, used to position all the elements on the screen. */
@@ -27,7 +26,7 @@ section.grid-system {
     display: grid;
     grid-template-columns: repeat(11, 1fr);
     grid-template-rows: repeat(20, 1fr);
-    row-gap: 1rem; /* Uncomment later, easier to place items on the grid visually without the gap */
+    row-gap: 2rem; /* Uncomment later, easier to place items on the grid visually without the gap */
 }
 
 /* Fixes the VH problem in IOS Safari and simular browsers */
@@ -113,7 +112,7 @@ input.hours_input {
     position: relative;
     background-color: white;
     border-radius: 1.5rem 1.5rem 0 0;
-    grid-row: 7 / 21;
+    grid-row: 6 / 21;
     grid-column: 1 / 12;
 }
 
