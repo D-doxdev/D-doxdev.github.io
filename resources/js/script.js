@@ -55,9 +55,12 @@ class EmployeeStatistics {
         this._allRowsInputFields.forEach(inputField => {
             inputField.addEventListener('input', () => {
                 
-                //checks for character length, important to have before calling the methods below as not to cause a bug where the rows per hour is updated despite characters being above three.
+                //checks for total amount of numbers, important before calling the following methods as not to cause a bug where the rows per hour is updated despite characters being above three.
                 if (inputField.value.length > 3) {
                     inputField.value = inputField.value.slice(0, 3);
+                }
+                else if (inputField.value == '') {
+                    inputField.value = 0;
                 }
                 this.calculateFinishedRows();
                 this.calculateRowsPerHour();
