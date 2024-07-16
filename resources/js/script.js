@@ -10,7 +10,7 @@ class EmployeeStatistics {
         this._rowsFinishedDomText = document.querySelector('.container_rows_done h2');
         this._rowsPerHourDomText = document.querySelector('.container_rows_per_hour h2');
 
-        this._workingHours = this._workingHoursInput.value;
+        this._workingHours = this.checkInputFieldsForNan(this._workingHoursInput.value);
         this.calculateRowsForTheDay();
 
         // Responsible for updating for fetching the DOM elemenets and keeping track of the current round when a new row is added
@@ -43,11 +43,25 @@ class EmployeeStatistics {
         this.updateRowInputFields();
     }
 
+    checkInputFieldsForNan(inputValue) {
+        if (isNaN(inputValue) || inputValue === '') {
+            return 0;
+        }
+        return inputValue;
+    }
+
     updateRowInputFields() {
         this._allRowsInputFields = document.querySelectorAll('.row_quantity_input');
         this._allRowsInputFields.forEach(inputField => {
-            inputField.addEventListener('input', () => this.calculateFinishedRows());
-            inputField.addEventListener('input', () => this.calculateRowsPerHour());
+            inputField.addEventListener('input', () => {
+                
+                //checks for character length, important to have before calling the methods below as not to cause a bug where the rows per hour is updated despite characters being above three.
+                if (inputField.value.length > 3) {
+                    inputField.value = inputField.value.slice(0, 3);
+                }
+                this.calculateFinishedRows();
+                this.calculateRowsPerHour();
+            });
         });
     }
 
@@ -56,41 +70,43 @@ class EmployeeStatistics {
     }
 
     updateWorkingHours() {
-        this._workingHours = this._workingHoursInput.value;
-        this.calculateRowsForTheDay();
-        this.calculateFinishedRows()
-        this.calculateRowsPerHour()
+            this._workingHours = this.checkInputFieldsForNan(this._workingHoursInput.value);
+            this.calculateRowsForTheDay();
+            this.calculateFinishedRows()
+            this.calculateRowsPerHour()
     }
 
     calculateRowsForTheDay() {
         const rowsForTheDay = this._workingHours * this._oneHourOfRows;
-        this._rowsSummaryDomText.innerText = rowsForTheDay;
+        this._rowsSummaryDomText.innerText = this.checkInputFieldsForNan(rowsForTheDay);
     }
 
     calculateFinishedRows() {
         // initializes an empty array which later will store the rows from the input fields
         const arrOfFinishedRows = [];
-
         // Loops through existing rows, converts the input from string to num and adds it to the array above.
         const rowInputs = document.querySelectorAll(".user_rows");
         for (const rowInput of rowInputs) {
             const inputField = rowInput.querySelector(".row_quantity_input");
-            arrOfFinishedRows.push(parseInt(inputField.value));
+            arrOfFinishedRows.push(this.checkInputFieldsForNan(parseInt(inputField.value)));
         }
 
         // Adds all the array items together and stores in rowSum variable.
-        console.log(arrOfFinishedRows);
         const rowSum = arrOfFinishedRows.reduce((a, b) => a + b, 0);
 
-        this._rowsFinishedDomText.innerText = rowSum;
+        this._rowsFinishedDomText.innerText = this.checkInputFieldsForNan(rowSum);
         return rowSum;
     }
 
     calculateRowsPerHour() {
         const storedRowSum = this.calculateFinishedRows();
+        // The if statements makes sure the program cannot throw an 'infinity' if the finished hours is divided by 0
+        if (this._workingHours == 0) {
+            return
+        }
         let rowPerHourCalc = storedRowSum / this._workingHours;
         // Rounds up to at most two decimals
-        this._rowsPerHourDomText.innerHTML = Math.round(rowPerHourCalc*100)/100;
+        this._rowsPerHourDomText.innerHTML = this.checkInputFieldsForNan(Math.round(rowPerHourCalc*100)/100);
     }
 
     addNewRow() {

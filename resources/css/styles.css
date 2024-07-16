@@ -26,7 +26,7 @@ section.grid-system {
     display: grid;
     grid-template-columns: repeat(11, 1fr);
     grid-template-rows: repeat(20, 1fr);
-    row-gap: 2rem; /* Uncomment later, easier to place items on the grid visually without the gap */
+    row-gap: 2.5rem; /* Uncomment later, easier to place items on the grid visually without the gap */
 }
 
 /* Fixes the VH problem in IOS Safari and simular browsers */
@@ -37,14 +37,14 @@ section.grid-system {
   }
 
 .container_rows_summary {
-    grid-row: 3 / 4;
+    grid-row: 2 / 3;
     grid-column: 3 / 6;
 }
 
 /* Divider styling */
 
 .divider {
-    grid-row: 3 / 4;
+    grid-row: 2 / 3;
     grid-column: 6 / 7;
     width: .1rem;
     height: calc(100% - .4rem); /* Adjust height to account for padding using calc */
@@ -56,17 +56,17 @@ section.grid-system {
 }
 
 .container_rows_done {
-    grid-row: 3 / 4;
+    grid-row: 2 / 3;
     grid-column: 7 / 10;
 }
 
 .container_rows_per_hour {
-    grid-row: 4 / 6;
+    grid-row: 3 / 5;
     grid-column: 5 / 8;
 }
 
 .container_working_hours {
-    grid-row: 4 / 6;
+    grid-row: 3 / 5;
     grid-column: 3 / 5;
     display: flex;
     flex-direction: column;
@@ -112,7 +112,7 @@ input.hours_input {
     position: relative;
     background-color: white;
     border-radius: 1.5rem 1.5rem 0 0;
-    grid-row: 6 / 21;
+    grid-row: 5 / 21;
     grid-column: 1 / 12;
 }
 
