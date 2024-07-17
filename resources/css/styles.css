@@ -33,6 +33,7 @@ h4 {
 /* Grid styling, used to position all the elements on the screen. */
 
 section.grid-system {
+    position: relative;
     height: 100vh;
     width: 100vw;
     display: grid;
@@ -166,7 +167,7 @@ input.hours_input {
 
 /* Adds margin so that the row items can be scrolled beyond the buttons. */
 .user_rows:last-child {
-    margin-bottom: 15vh;
+    margin-bottom: 40vh;
 }
 
 /* For smaller displays, increases margin so that the row items remain visible */
@@ -178,30 +179,56 @@ input.hours_input {
 
 /* Add row button styling */
 
-.btn_container {
-    width: 100vw;
-    position: absolute;
-    bottom: 1.5rem;
-    display: flex;
-    justify-content: end;
-}
+    .btn_container {
+        position: absolute;
+        bottom: 1.5rem; /* Adjust the bottom distance as needed */
+        right: 1.5rem;
+        width: 100%;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
 
-#remove-row-button img {
-    width: 3rem;
-    height: 3rem;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    border-radius: 50%; /* Makes the image round */
-    overflow: hidden;   /* Ensures no background shows through */
-}
+    .btn {
+        width: 3rem; /* Adjust the size as needed */
+        height: 3rem; /* Adjust the size as needed */
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        position: relative;
+    }
 
-#add-row-button img {
-    width: 4rem;
-    height: 4rem;
-    margin-right: 1rem;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    border-radius: 50%; /* Makes the image round */
-    overflow: hidden;   /* Ensures no background shows through */
-}
+    .btn::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 3rem; /* Adjust the icon size as needed */
+        height: 3rem; /* Adjust the icon size as needed */
+    }
+
+    #add-row-button {
+        width: 4rem; /* Adjust the size as needed */
+        height: 4rem; /* Adjust the size as needed */
+        margin-left: 1.3rem;
+    }
+
+    #add-row-button::before {
+        width: 4rem; /* Adjust the size as needed */
+        height: 4rem; /* Adjust the size as needed */
+    }
+
+
+    .remove-btn::before {
+        background: url('../svg/remove_btn.svg') no-repeat center center;
+        background-size: contain;
+    }
+
+    .add-btn::before {
+        background: url('../svg/add_btn.svg') no-repeat center center;
+        background-size: contain;
+    }
 
 /* Row styling,  centers the row container items within the cells of the grid using flex-box */
 
