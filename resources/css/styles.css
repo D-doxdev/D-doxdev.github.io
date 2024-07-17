@@ -6,7 +6,7 @@ body {
     background-color: #375D44;
     height: 100vh;
     width: 100vw;
-    overflow: hidden;
+    overflow: none;
 }
 
 @supports (height: 100dvh) {
@@ -175,7 +175,7 @@ input.hours_input {
 
 /* Adds margin so that the row items can be scrolled beyond the buttons. */
 .user_rows:last-child {
-    margin-bottom: 25rem;
+    margin-bottom: 21rem;
 }
 
 /* For smaller displays, increases margin so that the row items remain visible */
