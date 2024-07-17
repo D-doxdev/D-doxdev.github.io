@@ -9,6 +9,12 @@ body {
     overflow: hidden;
 }
 
+@supports (height: 100dvh) {
+    body {
+      height: 100dvh;
+    }
+  }
+
 h2 {
     font-size: 2.5rem;
     text-shadow: 1px 1px 2px rgba(0,0,0, 0.25);
@@ -39,7 +45,7 @@ section.grid-system {
     display: grid;
     grid-template-columns: repeat(11, 1fr);
     grid-template-rows: repeat(20, 1fr);
-    row-gap: 2.5rem; /* Uncomment later, easier to place items on the grid visually without the gap */
+    row-gap: 2.5rem;
     overflow: hidden;
 }
 
@@ -241,8 +247,3 @@ input.hours_input {
 }
 
 /* Fixes the VH problem in IOS Safari and simular browsers */
-@supports (height: 100dvh) {
-    body {
-      height: 100dvh;
-    }
-  }
