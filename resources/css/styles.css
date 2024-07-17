@@ -6,14 +6,14 @@ body {
     background-color: #375D44;
     height: 100vh;
     width: 100vw;
-    overflow: scroll;
+    overflow: hidden;
 }
 
 @supports (height: 100dvh) {
-    body, .section.grid-system {
-      height: 100dvh;
+    body, .section.grid-system, .add_rows_section, .add_rows_container {
+        height: 100dvh;
     }
-  }
+}
 
 h2 {
     font-size: 2.5rem;
@@ -46,6 +46,7 @@ section.grid-system {
     grid-template-rows: repeat(20, 1fr);
     row-gap: 2.5rem;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 .container_rows_summary {
@@ -152,7 +153,7 @@ input.hours_input {
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow: scroll;
+    overflow-y: auto;
 }
 
 /* User rows styling */
@@ -174,13 +175,13 @@ input.hours_input {
 
 /* Adds margin so that the row items can be scrolled beyond the buttons. */
 .user_rows:last-child {
-    margin-bottom: 30vh;
+    margin-bottom: 25rem;
 }
 
 /* For smaller displays, increases margin so that the row items remain visible */
-@media only screen and (max-height: 780px) {
+@media only screen and (max-height: 645px) {
     .user_rows:last-child {
-        margin-bottom: 50vh;
+        margin-bottom: 15remvh;
     }
   }
 
@@ -194,6 +195,7 @@ input.hours_input {
         display: flex;
         justify-content: end;
         align-items: center;
+        touch-action: manipulation;
     }
 
     .btn {
