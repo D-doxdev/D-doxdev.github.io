@@ -10,7 +10,7 @@ body {
 }
 
 @supports (height: 100dvh) {
-    body {
+    body, .section.grid-system {
       height: 100dvh;
     }
   }
@@ -203,6 +203,7 @@ input.hours_input {
         background-color: transparent;
         cursor: pointer;
         position: relative;
+        touch-action: manipulation;
     }
 
     .btn::before {
