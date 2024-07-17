@@ -41,13 +41,6 @@ section.grid-system {
     row-gap: 2.5rem; /* Uncomment later, easier to place items on the grid visually without the gap */
 }
 
-/* Fixes the VH problem in IOS Safari and simular browsers */
-@supports (height: 100dvh) {
-    body, section.grid-system {
-      height: 100dvh;
-    }
-  }
-
 .container_rows_summary {
     grid-row: 2 / 3;
     grid-column: 3 / 6;
@@ -196,7 +189,6 @@ input.hours_input {
 #remove-row-button img {
     width: 3rem;
     height: 3rem;
-    margin-right: 10px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 50%; /* Makes the image round */
     overflow: hidden;   /* Ensures no background shows through */
@@ -220,3 +212,9 @@ input.hours_input {
     justify-content: center;
 }
 
+/* Fixes the VH problem in IOS Safari and simular browsers */
+@supports (height: 100dvh) {
+    body, section.grid-system, .add_rows_section {
+      height: 100dvh;
+    }
+  }
