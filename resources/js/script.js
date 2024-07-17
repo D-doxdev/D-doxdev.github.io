@@ -4,7 +4,11 @@ class EmployeeStatistics {
 
         // Responsible for updating the rows
         this._workingHoursInput = document.getElementById('shift_hours');
+
+        // All buttons, used by methods to set eventlisteners and animations
+        this._allButtons = document.querySelectorAll('.btn');
         this._addNewRowBtn = document.getElementById('add-row-button');
+        this._deleteRowBtn = document.getElementById('remove-row-button');
         
         this._rowsSummaryDomText = document.querySelector('.container_rows_summary h2');
         this._rowsFinishedDomText = document.querySelector('.container_rows_done h2');
@@ -18,9 +22,6 @@ class EmployeeStatistics {
         this._addRows = document.querySelector('.user_rows');
         this._RowsContainer = document.querySelector('.add_rows_container');
 
-        // Responsible for deleting last row when the delete button is pressed
-        this._deleteRowBtn = document.getElementById('remove-row-button');
-
         // EVENT LISTENERS
         // Eventlisterner that continually updates the row summary based on the input in working hours
         this._workingHoursInput.addEventListener('input', () => this.updateWorkingHours());
@@ -32,6 +33,10 @@ class EmployeeStatistics {
         /* TEST FOR THE CALCULATE FINISHED ROWS METHOD */
         this._addNewRowBtn.addEventListener('click', () => this.calculateFinishedRows());
         this._addNewRowBtn.addEventListener('click', () => this.calculateRowsPerHour());
+
+        // Button eventlistener
+        this.buttonsEventListener();
+        this.buttonsFinishedAnimationEventListener()
 
         // Calls a method for checking the last row element so that the program understands which element to remove
         this.updateLastRowElement();
@@ -67,6 +72,35 @@ class EmployeeStatistics {
             });
         });
     }
+
+    buttonsEventListener() {
+        this._allButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                this.buttonAnimation(button);
+            });
+        });
+    }
+
+    buttonsFinishedAnimationEventListener() {
+        this._allButtons.forEach(button => {
+            button.addEventListener('animationend', () => {
+                this.removeButtonAnimation(button)
+            }, { once: true });
+        });
+    }
+    
+    
+    buttonAnimation(button) {
+        button.classList.add('shadow-drop-center');
+        this.buttonsFinishedAnimationEventListener(button);
+
+    }
+
+    removeButtonAnimation(button) {
+        button.classList.remove('shadow-drop-center');
+    }
+    
+
 
     updateLastRowElement() {
         this._lastRowElement = this._RowsContainer.lastElementChild;
@@ -117,6 +151,8 @@ class EmployeeStatistics {
             this._numOfCurrentRows += 1;
             let newRow = this._addRows.cloneNode(true);
             newRow.querySelector('h4').textContent = `Runda ${this._numOfCurrentRows}`;
+            // Adds necessary class names to add animation via library
+            newRow.classList.add("animate__animated", "animate__pulse", "animate__faster");
             let valueLocation = newRow.querySelector('.row_quantity_input');
             valueLocation.value = 0;
             this._RowsContainer.appendChild(newRow);
@@ -136,6 +172,7 @@ class EmployeeStatistics {
         this.calculateFinishedRows();
         this.updateRowInputFields();
     }
+
 }
 
 const test1 = new EmployeeStatistics('PlaceholderName');
