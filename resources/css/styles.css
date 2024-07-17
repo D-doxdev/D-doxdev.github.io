@@ -6,17 +6,29 @@ body {
     background-color: #375D44;
     height: 100vh;
     width: 100vw;
+    overflow: hidden;
 }
 
 h2 {
     font-size: 2.5rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0, 0.25);
 }
 
 h4 {
     font-family: "Roboto", sans-serif;
     font-size: .9rem;
     margin-bottom: .6rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0, 0.25);
 }
+
+@media only screen and (max-width: 380px) {
+    h2 {
+        font-size: 2rem;
+    }
+    h4 {
+        font-size: .8rem;
+    }
+  }
 
 /* Grid styling, used to position all the elements on the screen. */
 
@@ -48,7 +60,7 @@ section.grid-system {
     grid-column: 6 / 7;
     width: .1rem;
     height: calc(100% - .4rem); /* Adjust height to account for padding using calc */
-    background-color: white;
+    background-color: #ECEADF;
     border-radius: 1rem;
     margin: auto;
     padding: .2rem 0;
@@ -74,6 +86,20 @@ section.grid-system {
     justify-content: center;
 }
 
+/* Maintains readable text in the row HUD for smaller devices */
+
+@media only screen and (max-width: 380px) {
+    .container_rows_summary {
+        grid-row: 2 / 3;
+        grid-column: 2 / 6;
+    }
+
+    .container_rows_done {
+        grid-row: 2 / 3;
+        grid-column: 7 / 11;
+    }
+  }
+
 /* General input styling */
 
 input {
@@ -92,9 +118,11 @@ input {
     font-weight: bold;
     font-size: 1rem;
     color: #375D44;
-    border: .5rem solid #375D44;
+    background-color: #fffefa;
+    border: .5rem solid #41684f;
     border-width: .13rem;
     width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
 }
 
 /* Hours input styling */
@@ -110,10 +138,11 @@ input.hours_input {
 
 .add_rows_section {
     position: relative;
-    background-color: white;
+    background-color: #fffefa;
     border-radius: 1.5rem 1.5rem 0 0;
     grid-row: 5 / 21;
     grid-column: 1 / 12;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .add_rows_container {
@@ -132,13 +161,27 @@ input.hours_input {
     width: 75%;
 }
 
+.user_rows h4 {
+    text-shadow: none;
+    font-weight: 450;
+    color: #7a7a7a;
+}
+
 .user_rows:nth-child(1) {
     margin-top: 2rem;
 }
 
-.user_rows h4 {
-    color: black;
+/* Adds margin so that the row items can be scrolled beyond the buttons. */
+.user_rows:last-child {
+    margin-bottom: 15vh;
 }
+
+/* For smaller displays, increases margin so that the row items remain visible */
+@media only screen and (max-height: 780px) {
+    .user_rows:last-child {
+        margin-bottom: 50vh;
+    }
+  }
 
 /* Add row button styling */
 
@@ -147,14 +190,14 @@ input.hours_input {
     position: absolute;
     bottom: 1.5rem;
     display: flex;
-    justify-content: end
+    justify-content: end;
 }
 
 #remove-row-button img {
     width: 3rem;
     height: 3rem;
-    margin-right: .5rem;
-    box-shadow: 8px 8px 69px -16px rgba(66, 68, 90, 1);
+    margin-right: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 50%; /* Makes the image round */
     overflow: hidden;   /* Ensures no background shows through */
 }
@@ -163,7 +206,7 @@ input.hours_input {
     width: 4rem;
     height: 4rem;
     margin-right: 1rem;
-    box-shadow: 8px 8px 69px -16px rgba(66, 68, 90, 1);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 50%; /* Makes the image round */
     overflow: hidden;   /* Ensures no background shows through */
 }

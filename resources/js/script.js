@@ -59,9 +59,9 @@ class EmployeeStatistics {
                 if (inputField.value.length > 3) {
                     inputField.value = inputField.value.slice(0, 3);
                 }
-                else if (inputField.value == '') {
+                /* Uncomment to prevent empty fields else if (inputField.value == '') {
                     inputField.value = 0;
-                }
+                } */
                 this.calculateFinishedRows();
                 this.calculateRowsPerHour();
             });
