@@ -40,6 +40,7 @@ section.grid-system {
     grid-template-columns: repeat(11, 1fr);
     grid-template-rows: repeat(20, 1fr);
     row-gap: 2.5rem; /* Uncomment later, easier to place items on the grid visually without the gap */
+    overflow: hidden;
 }
 
 .container_rows_summary {
@@ -132,6 +133,7 @@ input.hours_input {
 
 .add_rows_section {
     position: relative;
+    overflow: hidden;
     background-color: #fffefa;
     border-radius: 1.5rem 1.5rem 0 0;
     grid-row: 5 / 21;
@@ -167,7 +169,7 @@ input.hours_input {
 
 /* Adds margin so that the row items can be scrolled beyond the buttons. */
 .user_rows:last-child {
-    margin-bottom: 40vh;
+    margin-bottom: 30vh;
 }
 
 /* For smaller displays, increases margin so that the row items remain visible */
