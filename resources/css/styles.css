@@ -177,11 +177,11 @@ input.hours_input {
     }
   }
 
-/* Add row button styling */
+/* Add/remove row button styling */
 
     .btn_container {
         position: absolute;
-        bottom: 1.5rem; /* Adjust the bottom distance as needed */
+        bottom: 1.5rem;
         right: 1.5rem;
         width: 100%;
         display: flex;
@@ -190,8 +190,8 @@ input.hours_input {
     }
 
     .btn {
-        width: 3rem; /* Adjust the size as needed */
-        height: 3rem; /* Adjust the size as needed */
+        width: 3rem;
+        height: 3rem;
         border: none;
         background-color: transparent;
         cursor: pointer;
@@ -204,21 +204,20 @@ input.hours_input {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 3rem; /* Adjust the icon size as needed */
-        height: 3rem; /* Adjust the icon size as needed */
+        width: 3rem;
+        height: 3rem;
     }
 
     #add-row-button {
-        width: 4rem; /* Adjust the size as needed */
-        height: 4rem; /* Adjust the size as needed */
+        width: 4rem;
+        height: 4rem;
         margin-left: 1.3rem;
     }
 
     #add-row-button::before {
-        width: 4rem; /* Adjust the size as needed */
-        height: 4rem; /* Adjust the size as needed */
+        width: 4rem;
+        height: 4rem;
     }
-
 
     .remove-btn::before {
         background: url('../svg/remove_btn.svg') no-repeat center center;
@@ -241,7 +240,7 @@ input.hours_input {
 
 /* Fixes the VH problem in IOS Safari and simular browsers */
 @supports (height: 100dvh) {
-    body, section.grid-system, .add_rows_section {
+    body {
       height: 100dvh;
     }
   }
