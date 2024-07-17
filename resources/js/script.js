@@ -1,3 +1,41 @@
+document.addEventListener('touchstart', function(e) {
+    var target = e.target;
+
+    // Check if the touched element is a textarea or any of the specified input types
+    if (target.tagName === 'TEXTAREA' ||
+        (target.tagName === 'INPUT' &&
+         ['text', 'date', 'password', 'email', 'number'].includes(target.type))
+    ) {
+        var intv = 100;
+
+        // Stop propagation to prevent triggering any parent event listeners
+        e.stopPropagation();
+
+        // Determine if the device is iOS
+        if (getMobileOperatingSystem() === 'ios') {
+            // Move the element off-screen and then focus on it
+            target.style.transform = 'translateY(-10000px)';
+            target.focus();
+
+            // Reset the transform after a short delay
+            setTimeout(function() {
+                target.style.transform = 'none';
+            }, intv);
+        }
+    }
+});
+
+function getMobileOperatingSystem() {
+    // Function to detect the mobile operating system
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return 'ios';
+    }
+
+    return 'other';
+}
+
 class EmployeeStatistics {
     constructor() {
         this._oneHourOfRows = 52;
