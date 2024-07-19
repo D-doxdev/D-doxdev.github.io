@@ -41,7 +41,7 @@ class EmployeeStatistics {
         // Calls a method for checking the last row element so that the program understands which element to remove
         this.updateLastRowElement();
 
-        // Gets the finishes rows when the program loads
+        // Calculates sum of the finishes rows when the program loads
         this.calculateFinishedRows();
 
         // applies the eventlistener to all the row fields when the programme starts
@@ -64,11 +64,18 @@ class EmployeeStatistics {
                 if (inputField.value.length > 3) {
                     inputField.value = inputField.value.slice(0, 3);
                 }
-                /* Uncomment to prevent empty fields else if (inputField.value == '') {
-                    inputField.value = 0;
-                } */
                 this.calculateFinishedRows();
                 this.calculateRowsPerHour();
+            });
+        });
+
+        /* Sets inputfield to Zero if it is empty */
+        this._allRowsInputFields = document.querySelectorAll('.row_quantity_input');
+        this._allRowsInputFields.forEach(inputField => {
+            inputField.addEventListener('focusout', () => {
+                if (inputField.value == '') {
+                    inputField.value = 0;
+                }
             });
         });
     }
