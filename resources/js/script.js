@@ -15,7 +15,7 @@ class EmployeeStatistics {
         this._rowsFinishedDomText = document.querySelector('.container_rows_done h2');
         this._rowsPerHourDomText = document.querySelector('.container_rows_per_hour h2');
 
-        this._workingHours = this.checkInputFieldsForNan(this._workingHoursInput.value);
+        this._workingHours = parseFloat(this.checkInputFieldsForNan(this._workingHoursInput.value));
         this.calculateRowsForTheDay();
 
         // Responsible for updating for fetching the DOM elemenets and keeping track of the current round when a new row is added
@@ -24,11 +24,12 @@ class EmployeeStatistics {
         this._RowsContainer = document.querySelector('.add_rows_container');
 
         // EVENT LISTENERS
-        // Eventlisterner that continually updates the row summary based on the input in working hours
+        // Eventlisterner that updates the row summary based on the input in working hours
         this._workingHoursInput.addEventListener('input', () => this.updateWorkingHours());
         this._plus30MinutesCheckbox.addEventListener('click', () => {
-            this.checkboxIsCheckedOrNot();
+            this.updateWorkingHoursWithCheckbox();
             this.calculateRowsForTheDay();
+            this.calculateRowsPerHour();
         });
 
         // Event listener that adds new row when add button is clicked
@@ -53,26 +54,28 @@ class EmployeeStatistics {
         this.updateRowInputFields();
     }
 
-    checkboxIsCheckedOrNot(calculatedRowsForTheDay) {
-        if (this._plus30MinutesCheckbox.checked == true ) {
-            calculatedRowsForTheDay += 26;
-            return calculatedRowsForTheDay;
+    updateWorkingHoursWithCheckbox() {
+        this._workingHours = parseFloat(this.checkInputFieldsForNan(this._workingHoursInput.value));
+        if (this._plus30MinutesCheckbox.checked == true) {
+            this._workingHours += 0.5;
+        } else if (this._plus30MinutesCheckbox.checked == false) {
+            this._workingHours -= 0.5;
         }
-        return calculatedRowsForTheDay
+        this._workingHoursInput.value = this._workingHours;
+        console.log(this._workingHours);
     }
 
     checkInputFieldsForNan(inputValue) {
         if (isNaN(inputValue) || inputValue === '') {
             return 0;
         }
-        return inputValue;
+        return parseFloat(inputValue); // Ensure input is a float
     }
 
     updateRowInputFields() {
         this._allRowsInputFields = document.querySelectorAll('.row_quantity_input');
         this._allRowsInputFields.forEach(inputField => {
             inputField.addEventListener('input', () => {
-                
                 //checks for total amount of numbers, important before calling the following methods as not to cause a bug where the rows per hour is updated despite characters being above three.
                 if (inputField.value.length > 3) {
                     inputField.value = inputField.value.slice(0, 3);
@@ -109,34 +112,29 @@ class EmployeeStatistics {
         });
     }
     
-    
     buttonAnimation(button) {
         button.classList.add('shadow-drop-center');
         this.buttonsFinishedAnimationEventListener(button);
-
     }
 
     removeButtonAnimation(button) {
         button.classList.remove('shadow-drop-center');
     }
-    
-
 
     updateLastRowElement() {
         this._lastRowElement = this._RowsContainer.lastElementChild;
     }
 
     updateWorkingHours() {
-            this._workingHours = this.checkInputFieldsForNan(this._workingHoursInput.value);
-            this.calculateRowsForTheDay();
-            this.calculateFinishedRows()
-            this.calculateRowsPerHour()
+        this._workingHours = parseFloat(this.checkInputFieldsForNan(this._workingHoursInput.value));
+        this.calculateRowsForTheDay();
+        this.calculateFinishedRows();
+        this.calculateRowsPerHour();
     }
 
     calculateRowsForTheDay() {
         let rowsForTheDay = this._workingHours * this._oneHourOfRows;
         /* Call method to check if checkbox is active*/
-        rowsForTheDay = this.checkboxIsCheckedOrNot(rowsForTheDay);
         this._rowsSummaryDomText.innerText = this.checkInputFieldsForNan(rowsForTheDay);
     }
 
@@ -161,11 +159,11 @@ class EmployeeStatistics {
         const storedRowSum = this.calculateFinishedRows();
         // The if statements makes sure the program cannot throw an 'infinity' if the finished hours is divided by 0
         if (this._workingHours == 0) {
-            return
+            return;
         }
         let rowPerHourCalc = storedRowSum / this._workingHours;
         // Rounds up to at most two decimals
-        this._rowsPerHourDomText.innerHTML = this.checkInputFieldsForNan(Math.round(rowPerHourCalc*100)/100);
+        this._rowsPerHourDomText.innerHTML = this.checkInputFieldsForNan(Math.round(rowPerHourCalc * 100) / 100);
     }
 
     addNewRow() {
@@ -193,9 +191,8 @@ class EmployeeStatistics {
         // updates the finished rows
         this.calculateFinishedRows();
         this.updateRowInputFields();
-        this.calculateRowsPerHour()
+        this.calculateRowsPerHour();
     }
-
 }
 
 const test1 = new EmployeeStatistics('PlaceholderName');

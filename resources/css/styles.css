@@ -102,11 +102,11 @@ section.grid-system {
 
 input[type=checkbox] {
   /* Double-sized Checkboxes */
-  -ms-transform: scale(1.5); /* IE */
-  -moz-transform: scale(1.5); /* FF */
-  -webkit-transform: scale(1.5); /* Safari and Chrome */
-  -o-transform: scale(1.5); /* Opera */
-  transform: scale(1.5);
+  -ms-transform: scale(1.4); /* IE */
+  -moz-transform: scale(1.4); /* FF */
+  -webkit-transform: scale(1.4); /* Safari and Chrome */
+  -o-transform: scale(1.4); /* Opera */
+  transform: scale(1.4);
 }
 
 /* Maintains readable text in the row HUD for smaller devices */
@@ -124,7 +124,7 @@ input[type=checkbox] {
 
     .container_working_hours {
         grid-row: 3 / 5;
-        grid-column: 3 / 5;
+        grid-column: 2 / 4;
     }
   }
 
