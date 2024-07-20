@@ -4,6 +4,7 @@ class EmployeeStatistics {
 
         // Responsible for updating the rows
         this._workingHoursInput = document.getElementById('shift_hours');
+        this._plus30MinutesCheckbox = document.getElementById('plus30min');
 
         // All buttons, used by methods to set eventlisteners and animations
         this._allButtons = document.querySelectorAll('.btn');
@@ -25,6 +26,10 @@ class EmployeeStatistics {
         // EVENT LISTENERS
         // Eventlisterner that continually updates the row summary based on the input in working hours
         this._workingHoursInput.addEventListener('input', () => this.updateWorkingHours());
+        this._plus30MinutesCheckbox.addEventListener('click', () => {
+            this.checkboxIsCheckedOrNot();
+            this.calculateRowsForTheDay();
+        });
 
         // Event listener that adds new row when add button is clicked
         this._addNewRowBtn.addEventListener('click', () => this.addNewRow());
@@ -46,6 +51,14 @@ class EmployeeStatistics {
 
         // applies the eventlistener to all the row fields when the programme starts
         this.updateRowInputFields();
+    }
+
+    checkboxIsCheckedOrNot(calculatedRowsForTheDay) {
+        if (this._plus30MinutesCheckbox.checked == true ) {
+            calculatedRowsForTheDay += 26;
+            return calculatedRowsForTheDay;
+        }
+        return calculatedRowsForTheDay
     }
 
     checkInputFieldsForNan(inputValue) {
@@ -121,7 +134,9 @@ class EmployeeStatistics {
     }
 
     calculateRowsForTheDay() {
-        const rowsForTheDay = this._workingHours * this._oneHourOfRows;
+        let rowsForTheDay = this._workingHours * this._oneHourOfRows;
+        /* Call method to check if checkbox is active*/
+        rowsForTheDay = this.checkboxIsCheckedOrNot(rowsForTheDay);
         this._rowsSummaryDomText.innerText = this.checkInputFieldsForNan(rowsForTheDay);
     }
 
