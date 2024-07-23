@@ -8,6 +8,7 @@ class RowsStatistics {
 
         // All buttons, used by methods to set eventlisteners and animations
         this._allButtons = document.querySelectorAll('.btn');
+        this._informationBtn = document.getElementById('information-button');
         this._addNewRowBtn = document.getElementById('add-row-button');
         this._deleteRowBtn = document.getElementById('remove-row-button');
         
@@ -23,7 +24,10 @@ class RowsStatistics {
         this._addRows = document.querySelector('.user_rows');
         this._RowsContainer = document.querySelector('.add_rows_container');
 
-        // Modal button
+        // Information modal
+        this._information_modal = document.querySelector(".information-modal-overlay");
+
+        // remove row modal and modal buttons
         this._modal = document.querySelector(".modal-overlay");
         this._closeBtn = document.querySelector(".close-modal-btn");
         this._acceptBtn = document.querySelector(".accept-modal-btn");
@@ -62,18 +66,20 @@ class RowsStatistics {
 
         // Modal event listener
         this._deleteRowBtn.addEventListener("click", (e) => {
-            //Stops the modal from opening when there's only one row
             if (this._numOfCurrentRows > 1) {
-                this.openModal(e);
+                this.openModal(this._modal);
             }
         });
-        
         this._modal.addEventListener("click", (e) => this.closeModal(e, true));
-        this._closeBtn.addEventListener("click", this.closeModal.bind(this));
+        this._closeBtn.addEventListener("click", () => this.closeModal(this._modal, false));
         this._acceptBtn.addEventListener('click', () => {
             this.deleteLastRow();
-            this.closeModal(this._acceptBtn);
+            this.closeModal(this._modal, false);
         });
+
+        //Information modal eventlistener
+        this._information_modal.addEventListener("click", (e) => this.closeModal(e, true));
+        this._informationBtn.addEventListener("click", () => this.openModal(this._information_modal));
     }
 
     updateWorkingHoursWithCheckbox() {
@@ -91,7 +97,7 @@ class RowsStatistics {
         if (isNaN(inputValue) || inputValue === '') {
             return 0;
         }
-        return parseFloat(inputValue); // Ensure input is a float
+        return parseFloat(inputValue); // Ensures input is a float
     }
 
     updateRowInputFields() {
@@ -148,7 +154,12 @@ class RowsStatistics {
     }
 
     updateWorkingHours() {
-        this._workingHours = parseFloat(this.checkInputFieldsForNan(this._workingHoursInput.value));
+        let inputValue = this._workingHoursInput.value;
+        if (inputValue.length > 2) {
+            inputValue = inputValue.slice(0, 2);
+            this._workingHoursInput.value = inputValue;
+        }
+        this._workingHours = parseFloat(this.checkInputFieldsForNan(inputValue));
         this.calculateRowsForTheDay();
         this.calculateFinishedRows();
         this.calculateRowsPerHour();
@@ -216,15 +227,21 @@ class RowsStatistics {
         this.calculateRowsPerHour();
     }
 
-    openModal() {
-        this._modal.classList.remove("hide");
+    openModal(modalElement) {
+        modalElement.classList.remove("hide");
     }
 
     closeModal(e, clickedOutside) {
         if (clickedOutside) {
-            if (e.target.classList.contains("modal-overlay"))
+            if (e.target.classList.contains("modal-overlay")) {
                 this._modal.classList.add("hide");
-        } else this._modal.classList.add("hide");
+            } else if (e.target.classList.contains("information-modal-overlay")) {
+                this._information_modal.classList.add("hide");
+            }
+        } else {
+            this._modal.classList.add("hide");
+            this._information_modal.classList.add("hide");
+        } 
     }
 }
 

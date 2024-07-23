@@ -7,6 +7,7 @@
     <title>Vad är mitt snitt?</title>
     <link rel="stylesheet" href="./resources/css/reset.css">
     <link rel="stylesheet" href="./resources/css/styles.css">
+    <!-- Fonts imported from google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -34,6 +35,7 @@
         <div class="container_working_hours">
             <form>
                 <input id="shift_hours" class="hours_input" type="number" maxlength="2" pattern='[0-9]*' name="working_hours" value="8" onclick="this.select();" min="1" max="15">
+                <h4>h</h4>
             </form>
             <form class="plus30min_container">
                 <label for="plus30min">+30 min</label><br>
@@ -55,6 +57,15 @@
             <button id="remove-row-button" aria-label="Remove row" class="btn remove-btn"></button>
             <button id="add-row-button" aria-label="Add new row" class="btn add-btn"></button>
         </div>
+        <!-- Information button -->
+        <button id="information-button" aria-label="Information about the website" class="btn info-btn"></button>
+        <!-- modal with information -->
+        <div class="information-modal-overlay hide">
+            <div class="information-modal-wrapper">
+                <h1>Information modal</h1>
+            </div>
+        </div>
+        <!-- Popup/modal, initially hidden -->
         <div class="modal-overlay hide">
             <div class="modal-wrapper">
                 <h1>Ta bort den senaste raden?</h1>
@@ -64,7 +75,6 @@
                 </div>
             </div>
         </div>
-        
         </section>
     
    <script defer src="./resources/js/script.js"></script>
@@ -72,3 +82,6 @@
 </body>
 
 </html>
+
+
+
