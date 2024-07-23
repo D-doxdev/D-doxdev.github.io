@@ -1,4 +1,4 @@
-class EmployeeStatistics {
+class RowsStatistics {
     constructor() {
         this._oneHourOfRows = 52;
 
@@ -24,9 +24,9 @@ class EmployeeStatistics {
         this._RowsContainer = document.querySelector('.add_rows_container');
 
         // Modal button
-        this._openBtn = document.querySelector(".open-modal-btn");
         this._modal = document.querySelector(".modal-overlay");
         this._closeBtn = document.querySelector(".close-modal-btn");
+        this._acceptBtn = document.querySelector(".accept-modal-btn");
 
         // EVENT LISTENERS
         // Eventlisterner that updates the row summary based on the input in working hours
@@ -39,7 +39,9 @@ class EmployeeStatistics {
 
         // Event listener that adds new row when add button is clicked
         this._addNewRowBtn.addEventListener('click', () => this.addNewRow());
-        this._deleteRowBtn.addEventListener('click', () => this.deleteLastRow());
+
+        // Event listener to trigger the method for deleting the last row when pressed
+        //this._deleteRowBtn.addEventListener('click', () => this.deleteLastRow());
 
         /* TEST FOR THE CALCULATE FINISHED ROWS METHOD */
         this._addNewRowBtn.addEventListener('click', () => this.calculateFinishedRows());
@@ -59,9 +61,19 @@ class EmployeeStatistics {
         this.updateRowInputFields();
 
         // Modal event listener
-        this._deleteRowBtn.addEventListener("click", this.openModal.bind(this));
+        this._deleteRowBtn.addEventListener("click", (e) => {
+            //Stops the modal from opening when there's only one row
+            if (this._numOfCurrentRows > 1) {
+                this.openModal(e);
+            }
+        });
+        
         this._modal.addEventListener("click", (e) => this.closeModal(e, true));
         this._closeBtn.addEventListener("click", this.closeModal.bind(this));
+        this._acceptBtn.addEventListener('click', () => {
+            this.deleteLastRow();
+            this.closeModal(this._acceptBtn);
+        });
     }
 
     updateWorkingHoursWithCheckbox() {
@@ -217,4 +229,4 @@ class EmployeeStatistics {
     }
 }
 
-const test1 = new EmployeeStatistics('PlaceholderName');
+const rowStatistic_1 = new RowsStatistics();
