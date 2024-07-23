@@ -266,7 +266,7 @@ input.hours_input {
     /* Delete row popup field styling/placement on grid */
 
     .modal-overlay {
-        background: rgba(61, 61, 61, 0.7);
+        background: rgba(0, 0, 0, 0.5);
         width: 100%;
         height: 100%;
         position: fixed;
@@ -277,9 +277,7 @@ input.hours_input {
     }
      
     .modal-wrapper {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
+        position: relative;
         width: 300px;
         height: 150px;
         background: ghostwhite;
@@ -288,49 +286,51 @@ input.hours_input {
         left: 50%;
         transform: translate(-50%, -50%);
         border-radius: 5px;
+        display: flex;
+        flex-direction: column;
     }
 
     .modal-wrapper h1 {
+        margin-top: 2rem;
         font-size: 1.1rem;
         color: rgb(90, 90, 90);
         text-align: center;
         text-shadow: none;
     }
      
-    .open-modal-btn-wrapper {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-    
-    .modal-btns-wrapper {
+       .modal-btns-wrapper {
+        margin-top: auto;
         display: flex;
         justify-content: center;
         align-content: end;
+        margin-bottom: 1.2rem;
     }
 
     /* Modal animations */
 
     .accept-modal-btn,
     .close-modal-btn {
-        padding: 10px 35px 10px 35px;
+        padding: 15px 45px 15px 45px;
         border-radius: 5px;
-        background: #b3b3b3;
         font-size: 15px;
-        color: ghostwhite;
+        color: #555555;
         font-weight: 5px;
         cursor: pointer;
+        font-weight: bold;
+        text-shadow: none;
         margin: 0; /* Margin reset to stop inheritence from previous button styling */
     }
 
     .accept-modal-btn {
-        color: rgb(255, 201, 201);
         margin-right: 15px;
+        border: .5rem solid #e6e6e6;
+        border-width: .13rem;
+        border-radius: .2rem;
     }
 
     .close-modal-btn {
         margin-left: 15px;
+        background-color: #d8d8d8;;
     }
      
     .close-btn-wrapper {
