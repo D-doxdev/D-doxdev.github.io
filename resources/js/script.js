@@ -85,7 +85,6 @@ class RowsStatistics {
             this._workingHours -= 0.5;
         }
         this._workingHoursInput.value = this._workingHours;
-        console.log(this._workingHours);
     }
 
     checkInputFieldsForNan(inputValue) {
