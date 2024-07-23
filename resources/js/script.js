@@ -23,6 +23,11 @@ class EmployeeStatistics {
         this._addRows = document.querySelector('.user_rows');
         this._RowsContainer = document.querySelector('.add_rows_container');
 
+        // Modal button
+        this._openBtn = document.querySelector(".open-modal-btn");
+        this._modal = document.querySelector(".modal-overlay");
+        this._closeBtn = document.querySelector(".close-modal-btn");
+
         // EVENT LISTENERS
         // Eventlisterner that updates the row summary based on the input in working hours
         this._workingHoursInput.addEventListener('input', () => this.updateWorkingHours());
@@ -52,13 +57,19 @@ class EmployeeStatistics {
 
         // applies the eventlistener to all the row fields when the programme starts
         this.updateRowInputFields();
+
+        // Modal event listener
+        this._deleteRowBtn.addEventListener("click", this.openModal.bind(this));
+        this._modal.addEventListener("click", (e) => this.closeModal(e, true));
+        this._closeBtn.addEventListener("click", this.closeModal.bind(this));
     }
 
     updateWorkingHoursWithCheckbox() {
         this._workingHours = parseFloat(this.checkInputFieldsForNan(this._workingHoursInput.value));
         if (this._plus30MinutesCheckbox.checked == true) {
             this._workingHours += 0.5;
-        } else if (this._plus30MinutesCheckbox.checked == false) {
+        // Stops the subtraction if value equals zero as to stop users from setting the value to negative numbers 
+        } else if (this._plus30MinutesCheckbox.checked == false && this._workingHours !== 0) {
             this._workingHours -= 0.5;
         }
         this._workingHoursInput.value = this._workingHours;
@@ -192,6 +203,17 @@ class EmployeeStatistics {
         this.calculateFinishedRows();
         this.updateRowInputFields();
         this.calculateRowsPerHour();
+    }
+
+    openModal() {
+        this._modal.classList.remove("hide");
+    }
+
+    closeModal(e, clickedOutside) {
+        if (clickedOutside) {
+            if (e.target.classList.contains("modal-overlay"))
+                this._modal.classList.add("hide");
+        } else this._modal.classList.add("hide");
     }
 }
 
