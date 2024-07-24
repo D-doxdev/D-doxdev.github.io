@@ -86,7 +86,7 @@ section.grid-system {
 .information-modal-wrapper {
     position: relative;
     width: 300px;
-    height: 350px;
+    height: 360px;
     background: ghostwhite;
     position: fixed;
     top: 50%;
@@ -95,6 +95,7 @@ section.grid-system {
     border-radius: 5px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .information-modal-wrapper h1 {
@@ -105,16 +106,35 @@ section.grid-system {
     text-shadow: none;
 }
 
+.information-modal-wrapper h4 {
+    margin-top: .6rem;
+    padding: 0 1rem;
+    color: rgb(90, 90, 90);
+    text-align: center;
+    text-shadow: none;
+}
+
 /* Wrapper layout */
 .socials-wrapper {
     margin-top: auto;
-    margin-bottom: 1.3rem;
+    margin-bottom: .5rem;
+    border-top: 1px solid rgb(218, 218, 218);
 }
 
 .socials-wrapper ul {
     display: flex;
     flex-direction: row;
-    justify-content: center
+    justify-content: space-evenly;
+    margin-top: .5rem;
+}
+
+/* Copyright text */
+.socials-wrapper h4 {
+    text-align: center;
+    text-shadow: none;
+    margin-top: .5rem;
+    color:#dfdfdf;
+    font-size: .7rem;
 }
 
 /* Link styling */
@@ -123,13 +143,16 @@ section.grid-system {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: black;
+    color: #252525;
     text-shadow: none;
-    text-decoration: none;
     font-weight: bold;
     font-size: 1rem;
     margin: 0 .5rem;
     padding: .5rem .5rem;
+}
+
+.social-list-items:active {
+    color: rgb(121, 121, 121);
 }
 
 .socials-wrapper li {
@@ -149,10 +172,10 @@ section.grid-system {
        its related properties to add
        the SVG content */
     background-image: url('../svg/linkedIn_icon.svg');
-    background-size: 2rem 2rem;
-    height: 2rem;
-    width: 2rem;
-    margin-right: .5rem;
+    background-size: 1.1rem 1.1rem;
+    height: 1.1rem;
+    width: 1.1rem;
+    margin-right: .3rem;
 }
 
 /* Github socail icon */
@@ -164,10 +187,10 @@ section.grid-system {
        its related properties to add
        the SVG content */
     background-image: url('../svg/github_icon.svg');
-    background-size: 2rem 2rem;
-    height: 2rem;
-    width: 2rem;
-    margin-right: .5rem;
+    background-size: 1.2rem 1.2rem;
+    height: 1.2rem;
+    width: 1.2rem;
+    margin-right: .2rem;
 }
 
 /* Hub tyling */
@@ -215,7 +238,7 @@ section.grid-system {
    font-weight: bold; 
 }
 
-.container_working_hours form {
+.hours-form {
     display: flex;
     align-items: end;
 }
