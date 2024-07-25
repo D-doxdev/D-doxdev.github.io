@@ -121,9 +121,13 @@ class RowsStatistics {
                     inputField.value = 0;
                 }
             });
+            // Resets the view to the top of the page after exiting a inputfield to fix bug in IOS where the viewport is without the body after exiting row inputfields
+            this.scrollToTop();
         });
     }
 
+    // Add/remove button animation
+    
     buttonsEventListener() {
         this._allButtons.forEach(button => {
             button.addEventListener('click', () => {
@@ -148,11 +152,14 @@ class RowsStatistics {
     removeButtonAnimation(button) {
         button.classList.remove('shadow-drop-center');
     }
+    
 
+    // Updates the last row element
     updateLastRowElement() {
         this._lastRowElement = this._RowsContainer.lastElementChild;
     }
 
+    // Updates working hours and calls methods for updating rows per hours
     updateWorkingHours() {
         let inputValue = this._workingHoursInput.value;
         if (inputValue.length > 2) {
@@ -242,6 +249,14 @@ class RowsStatistics {
             this._modal.classList.add("hide");
             this._information_modal.classList.add("hide");
         } 
+    }
+
+    scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth"
+        });
     }
 }
 

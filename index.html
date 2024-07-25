@@ -20,7 +20,7 @@
 <body>
     <section class="grid-system">
         <div class="row_container container_rows_summary">
-            <h4>Rader att köra</h4>
+            <h4>Rader att plocka</h4>
             <h2>0</h2>
         </div>
         <div class="divider"></div>
@@ -35,7 +35,7 @@
         <div class="container_working_hours">
             <form class="hours-form">
                 <input id="shift_hours" class="hours_input" type="number" maxlength="2" pattern='[0-9]*' name="working_hours" value="8" onclick="this.select();" min="1" max="15">
-                <h4>h</h4>
+                <!-- Uncomment to add text to the right of the hours input field <h4>h</h4>-->
             </form>
             <form class="plus30min_container">
                 <label for="plus30min">+30 min</label><br>
@@ -59,21 +59,21 @@
         </div>
         <!-- Information button -->
         <button id="information-button" aria-label="Information about the website" class="btn info-btn"></button>
-        <!-- modal with information -->
+        <!-- Modal/popup with information -->
         <div class="information-modal-overlay hide">
             <div class="information-modal-wrapper">
                 <h1>Information</h1>
-                <h4>Raderna för dagen kan justeras genom att ändra antalet arbetstimmar i fältet med nummer (8).</h4>
+                <h4>Antalet rader att plocka kan justeras genom att ändra antalet arbetstimmar i fältet med nummer (8).</h4>
                 <h4>Ange det totala antalet rader per order i fältet/fälten med texten (Runda 1) för att beräkna avklarade rader samt antal rader i timmen.</h4>
-                <h4>Nya rundor kan läggas till samt tas bort med knapparna längst nere till vänster.</h4>
+                <h4>Nya rundor kan läggas till samt tas bort med knapparna längst nere till höger.</h4>
                 <div class="socials-wrapper">
                     <ul>
                         <li><a class="social-list-items social-item1" href="https://www.linkedin.com/in/nicholas-isaac-falkman-doxander-934076149" target=”_blank”>LinkedIn</a></li>
                         <li><a class="social-list-items social-item2" href="https://github.com/D-doxdev" target=”_blank”>Github</a></li>
                     </ul>
-                    <h4>Designed and built by Nicholas Falkman Doxander.
+                    <h4>Designed and built by Nicholas Falkman Doxander
                         <br>
-                        All rights reserved.
+                        All rights reserved
                     </h4>
                 </div>
             </div>

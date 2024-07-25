@@ -96,6 +96,7 @@ section.grid-system {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
 .information-modal-wrapper h1 {
@@ -118,7 +119,7 @@ section.grid-system {
 .socials-wrapper {
     margin-top: auto;
     margin-bottom: .5rem;
-    border-top: 1px solid rgb(218, 218, 218);
+    border-top: 1px solid rgb(230, 230, 230);
 }
 
 .socials-wrapper ul {
@@ -133,8 +134,9 @@ section.grid-system {
     text-align: center;
     text-shadow: none;
     margin-top: .5rem;
-    color:#dfdfdf;
-    font-size: .7rem;
+    color:#dbdbdb;
+    font-size: .6rem;
+    font-style: italic;
 }
 
 /* Link styling */
@@ -368,7 +370,7 @@ input.hours_input {
     .btn_container {
         position: absolute;
         bottom: 1.5rem;
-        right: 1.5rem;
+        right: 1.8rem;
         width: 100%;
         display: flex;
         justify-content: end;
@@ -385,6 +387,8 @@ input.hours_input {
         position: relative;
         touch-action: manipulation;
         border-radius: 50%;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+        transition: opacity 0.02s ease-in-out;
     }
 
     .btn::before {
@@ -399,14 +403,17 @@ input.hours_input {
     }
 
     #add-row-button {
-        width: 4rem;
-        height: 4rem;
         margin-left: 1.3rem;
+        opacity: 1;
+    }
+
+    #remove-row-button {
+        opacity: 1;
     }
 
     #add-row-button::before {
-        width: 4rem;
-        height: 4rem;
+        width: 3.5rem;
+        height: 3.5rem;
     }
 
     .remove-btn::before {
@@ -418,6 +425,17 @@ input.hours_input {
         background: url('../svg/add_btn.svg') no-repeat center center;
         background-size: contain;
     }
+
+    /* Button animation */
+
+    #add-row-button:active {
+        opacity: .7;
+    }
+
+    #remove-row-button:active {
+        opacity: .7;
+    }
+
 
     /* Modal window */
 
@@ -444,6 +462,7 @@ input.hours_input {
         border-radius: 5px;
         display: flex;
         flex-direction: column;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
     }
 
     .modal-wrapper h1 {
@@ -529,6 +548,7 @@ input.hours_input {
  * ----------------------------------------
  */
 
+ /* Uncomment to add backgroudn shadow on buttonpress
  .shadow-drop-center {
 	-webkit-animation: shadow-drop-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: shadow-drop-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -554,4 +574,4 @@ input.hours_input {
               box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
     }
   }
-  
+  */
