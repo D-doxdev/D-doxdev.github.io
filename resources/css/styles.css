@@ -575,6 +575,7 @@ input.hours_input {
   }
   */
 
+/* Alters duration of fadein animation on all modals/popups */
   .animate__animated.animate__fadeIn {
-    --animate-duration: .3s;
+    --animate-duration: .4s;
   }
