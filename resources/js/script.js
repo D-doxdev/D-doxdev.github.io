@@ -120,9 +120,9 @@ class RowsStatistics {
                 if (inputField.value == '') {
                     inputField.value = 0;
                 }
+                // Resets the view to the top of the page after exiting a inputfield to fix bug in IOS where the viewport is without the body after exiting row inputfields
+                this.scrollToTop();
             });
-            // Resets the view to the top of the page after exiting a inputfield to fix bug in IOS where the viewport is without the body after exiting row inputfields
-            this.scrollToTop();
         });
     }
 
@@ -211,7 +211,7 @@ class RowsStatistics {
             this._numOfCurrentRows += 1;
             let newRow = this._addRows.cloneNode(true);
             newRow.querySelector('h4').textContent = `Runda ${this._numOfCurrentRows}`;
-            // Adds necessary class names to add animation via library
+            // Adds necessary classes to add animation via CSS animations library
             newRow.classList.add("animate__animated", "animate__pulse", "animate__faster");
             let valueLocation = newRow.querySelector('.row_quantity_input');
             valueLocation.value = 0;
