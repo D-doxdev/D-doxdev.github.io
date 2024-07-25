@@ -198,10 +198,11 @@ class RowsStatistics {
     calculateRowsPerHour() {
         const storedRowSum = this.calculateFinishedRows();
         // The if statements makes sure the program cannot throw an 'infinity' if the finished hours is divided by 0
-        if (this._workingHours == 0) {
-            return;
-        }
         let rowPerHourCalc = storedRowSum / this._workingHours;
+        // Avoids infinity by dividing by 0 and updates rows per hour when hours input field is set to 0 or empty
+        if (this._workingHours == 0 || '') {
+            this._rowsPerHourDomText.innerHTML = 0;
+        } else
         // Rounds up to at most two decimals
         this._rowsPerHourDomText.innerHTML = this.checkInputFieldsForNan(Math.round(rowPerHourCalc * 100) / 100);
     }

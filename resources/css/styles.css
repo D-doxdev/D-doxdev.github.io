@@ -371,7 +371,6 @@ input.hours_input {
         position: absolute;
         bottom: 1.5rem;
         right: 1.8rem;
-        width: 100%;
         display: flex;
         justify-content: end;
         align-items: center;
@@ -388,7 +387,7 @@ input.hours_input {
         touch-action: manipulation;
         border-radius: 50%;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-        transition: opacity 0.02s ease-in-out;
+        transition: opacity 0.02s ease-in-out; /* Add/remove button animations */
     }
 
     .btn::before {
@@ -575,3 +574,7 @@ input.hours_input {
     }
   }
   */
+
+  .animate__animated.animate__fadeIn {
+    --animate-duration: .3s;
+  }
