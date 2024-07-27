@@ -91,6 +91,7 @@ class RowsStatistics {
             this._workingHours -= 0.5;
         }
         this._workingHoursInput.value = this._workingHours;
+        this.scrollToTop();
     }
 
     checkInputFieldsForNan(inputValue) {

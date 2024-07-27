@@ -43,8 +43,7 @@ section.grid-system {
     width: 100vw;
     display: grid;
     grid-template-columns: repeat(11, 1fr);
-    grid-template-rows: repeat(10, 1fr);
-    row-gap: 2.5rem;
+    grid-template-rows: repeat(30, 1fr);
     overflow: hidden;
     box-sizing: border-box;
 }
@@ -223,12 +222,12 @@ section.grid-system {
 }
 
 .container_rows_per_hour {
-    grid-row: 3 / 5;
+    grid-row: 4 / 5;
     grid-column: 5 / 8;
 }
 
 .container_working_hours {
-    grid-row: 3 / 5;
+    grid-row: 4 / 6;
     grid-column: 3 / 5;
     display: flex;
     flex-direction: column;
@@ -275,7 +274,7 @@ section.grid-system {
     }
 
     .container_working_hours {
-        grid-row: 3 / 5;
+        grid-row: 4 / 6;
         grid-column: 2 / 4;
     }
   }
@@ -335,29 +334,32 @@ input.hours_input {
 /* Add user rows container styling */
 
 .add_rows_section {
-    position: relative;
-    overflow: hidden;
-    background-color: #fffefa;
-    border-radius: 1.5rem 1.5rem 0 0;
-    grid-row: 5 / -1;
+    grid-row: 7 / -1;
     grid-column: 1 / 12;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    height: auto;
+    width: auto;
 }
 
 .add_rows_container {
     width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     overflow-y: auto;
-
 }
 
 /* User rows styling */
 
 .user_rows {
     margin-top: .8rem;
-    width: 75%;
+    width: 70%;
 }
 
 .user_rows h4 {
@@ -378,7 +380,7 @@ input.hours_input {
 /* Add/remove row button styling */
 
     .btn_container {
-        position: fixed;
+        position: absolute;
         bottom: 1.5rem;
         right: 1.8rem;
         display: flex;
