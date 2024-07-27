@@ -238,7 +238,7 @@ section.grid-system {
 
 .container_working_hours h4 {
    margin-left: .3rem;
-   /*font-weight: bold;*/ 
+   font-weight: normal;
 }
 
 .hours-form {
@@ -247,6 +247,7 @@ section.grid-system {
 }
 
 .hours-form input {
+    transform: scale(.8);
     -ms-transform: scale(.8); /* IE */
     -moz-transform: scale(.8); /* FF */
     -webkit-transform: scale(.8); /* Safari and Chrome */
@@ -326,9 +327,16 @@ input[type=checkbox] {
 
 input.hours_input {
     width: 2rem;
+    height: 1.5rem;
+    padding: 0.2rem;
+    font-size: 1rem;
     color: white;
     border-color: white;
     background-color: #375D44;
+    border: .13rem solid #618a70;
+    text-align: center;
+    border-radius: .2rem;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
 }
 
 /* Add user rows container styling */
