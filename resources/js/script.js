@@ -87,7 +87,7 @@ class RowsStatistics {
         if (this._plus30MinutesCheckbox.checked == true) {
             this._workingHours += 0.5;
         // Stops the subtraction if value equals zero as to stop users from setting the value to negative numbers 
-        } else if (this._plus30MinutesCheckbox.checked == false && this._workingHours !== 0) {
+        } else if (this._plus30MinutesCheckbox.checked == false && this._workingHours !== 0 && Number.isInteger(this._workingHours) == false) {
             this._workingHours -= 0.5;
         }
         this._workingHoursInput.value = this._workingHours;
