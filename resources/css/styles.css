@@ -375,7 +375,7 @@ input.hours_input {
 
 /* Adds margin so that the row items can be scrolled beyond the buttons. */
 .user_rows:last-child {
-    margin-bottom: 8rem;
+    margin-bottom: 120px
 }
 
 /* Add/remove row button styling */
